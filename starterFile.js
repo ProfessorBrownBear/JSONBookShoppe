@@ -119,15 +119,10 @@ router.post('/authors', async (req, res) => {
     res.status(400).json({ message: err.message });
 
   }
-
 });
 
-
-
 // POST a new book
-
 router.post('/books', async (req, res) => {
-
   const book = new Book({
 
     title: req.body.title,
@@ -139,8 +134,6 @@ router.post('/books', async (req, res) => {
     author: req.body.authorId
 
   });
-
-
 
   try {
 
@@ -155,8 +148,6 @@ router.post('/books', async (req, res) => {
   }
 
 });
-
-
 
 // PATCH (update) a book
 
@@ -229,8 +220,43 @@ router.delete('/books/:id', async (req, res) => {
 module.exports = router;
 
 
-app.js
+************** app.js  *********************
 
+  The API endpoints we created are just the backend. 
+  They provide the data and handle the database operations, but don't directly create any user interface. 
+  The frontend (HTML, CSS, JavaScript) is responsible for creating the user interface and interacting with these API endpoints.
+
+The code I provided for the bookstore shop does not contain a webpage to actuate the APIs. What I shared is strictly the backend Express.js routes that define the API endpoints for interacting with the MongoDB database.
+This code sets up RESTful API endpoints that can be called from any client (web, mobile, or other services), but it doesn't include any frontend code or HTML pages to interact with these APIs directly.
+To create a webpage that interacts with these APIs, you would need to:
+
+Create HTML pages for your bookstore interface.
+Use JavaScript (potentially with a framework like React, Vue, or Angular) to make HTTP requests to these API endpoints.
+Handle the responses from the API and update the webpage accordingly.
+
+For example, a simple HTML page with JavaScript to fetch and display all books might look something like this:
+Simple Bookstore FrontendClick to open website
+This simple HTML page would:
+
+Make a GET request to /api/books when loaded.
+Receive the JSON response containing all books.
+Create HTML elements to display each book's information.
+
+To use this, you would need to:
+
+Set up a way to serve static files in your Express app.
+Create more HTML pages and JavaScript functions to handle creating, updating, and deleting books.
+
+For a full-fledged web application, you might want to consider:
+
+Using a frontend framework like React, Vue, or Angular for more complex interactions.
+Implementing user authentication and authorization.
+Adding form validation on both client and server sides.
+Improving error handling and user feedback.
+Styling your pages with CSS for a better user experience.
+  
+  
+  
 const bookRoutes = require('./bookRoutes');
 app.use('/api', bookRoutes);
 
